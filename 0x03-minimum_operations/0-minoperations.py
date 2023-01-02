@@ -21,6 +21,9 @@ def minOperations(n):
         elif newvalue % 5 == 0:
             newvalue = newvalue / 5
             minm += 5
+        elif newvalue % 7 == 0:
+            newvalue = newvalue / 7
+            minm += 7
         else:
             minm += newvalue
             newvalue = 1
