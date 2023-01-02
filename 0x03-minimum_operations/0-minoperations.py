@@ -18,9 +18,6 @@ def minOperations(n):
         elif newvalue % 3 == 0:
             newvalue = newvalue / 3
             minm += 3
-        elif newvalue % 4 == 0:
-            newvalue = newvalue / 4
-            minm += 4
         elif newvalue % 5 == 0:
             newvalue = newvalue / 5
             minm += 5
