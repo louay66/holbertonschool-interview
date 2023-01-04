@@ -10,8 +10,9 @@ def minOperations(n):
     """
     newvalue = n
     minm = 0
-
-    if n < 2 or not isinstance(n, int):
+    if not isinstance(n, int):
+        return 0
+    if n < 2:
         return 0
     while newvalue != 1:
         if newvalue % 2 == 0:
