@@ -20,5 +20,5 @@ def minOperations(n):
             newvalue = newvalue / i
             minm += i
         else:
-            i = i + 1        
+            i = i + 1
     return minm
