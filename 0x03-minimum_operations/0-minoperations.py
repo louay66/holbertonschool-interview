@@ -27,4 +27,4 @@ def minOperations(n):
         else:
             minm += newvalue
             newvalue = 1
-    return minm
+    return int(minm)
