@@ -5,11 +5,13 @@
 
 
 def minOperations(n):
-
+    """
+    method that calculates the fewest operations
+    """
     newvalue = n
     minm = 0
 
-    if n <= 0 or not isinstance(n, int):
+    if n < 2 or not isinstance(n, int):
         return 0
     while newvalue != 1:
         if newvalue % 2 == 0:
