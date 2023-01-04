@@ -9,7 +9,7 @@ def minOperations(n):
     newvalue = n
     minm = 0
 
-    if n <= 0 or n is None:
+    if n <= 0 or not isinstance(n, int):
         return 0
     while newvalue != 1:
         if newvalue % 2 == 0:
