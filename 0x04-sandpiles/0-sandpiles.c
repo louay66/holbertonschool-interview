@@ -71,23 +71,40 @@ int is_stable(int grid1[3][3])
 void toppling_round(int grid1[3][3])
 {
 	int i, j;
+	int orgin[3][3] = {
+		 {0, 0, 0},
+		 {0, 0, 0},
+		 {0, 0, 0}};
 
+	sum_grid(orgin, grid1);
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
 		{
 			if (grid1[i][j] > 3)
 			{
+				if (orgin[i][j] < 3)
+				{
+					continue;
+				}
 				grid1[i][j] -= 4;
 
-				if (i - 1 >= 0)
+				if (i > 0)
+				{
 					grid1[i - 1][j] += 1;
-				if (i + 1 <= 2)
+				}
+				if (i < 2)
+				{
 					grid1[i + 1][j] += 1;
-				if (j + 1 <= 2)
+				}
+				if (j < 2)
+				{
 					grid1[i][j + 1] += 1;
-				if (j - 1 >= 0)
+				}
+				if (j > 0)
+				{
 					grid1[i][j - 1] += 1;
+				}
 			}
 		}
 	}
@@ -97,6 +114,7 @@ void toppling_round(int grid1[3][3])
  * sandpiles_sum - sandplis theory
  * @grid1: Left 3x3 grid
  * @grid2: Right 3x3 grid
+ *
  *
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
