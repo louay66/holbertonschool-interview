@@ -8,6 +8,8 @@
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
+	if (is_stable(grid1) == 1 || is_stable(grid2) == 1)
+		return;
 	sum_grid(grid1, grid2);
 
 	while (is_stable(grid1) != 0)
@@ -100,12 +102,8 @@ void toppling_round(int grid1[3][3])
 	{
 		for (j = 0; j < 3; j++)
 		{
-			if (grid1[i][j] > 3)
+			if (orgin[i][j] > 3)
 			{
-				if (orgin[i][j] < 3)
-				{
-					continue;
-				}
 				grid1[i][j] -= 4;
 
 				if (i > 0)
