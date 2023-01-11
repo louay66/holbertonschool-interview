@@ -1,6 +1,24 @@
 #include "sandpiles.h"
 
 /**
+ * sandpiles_sum - sandplis theory
+ * @grid1: Left 3x3 grid
+ * @grid2: Right 3x3 grid
+ *
+ */
+void sandpiles_sum(int grid1[3][3], int grid2[3][3])
+{
+	sum_grid(grid1, grid2);
+
+	while (is_stable(grid1) != 0)
+	{
+		printf("=\n");
+		print_grid1(grid1);
+		toppling_round(grid1);
+	}
+}
+
+/**
  * print_grid1 - Print 3x3 grid
  * @grid: 3x3 grid
  *
@@ -70,6 +88,7 @@ int is_stable(int grid1[3][3])
 
 void toppling_round(int grid1[3][3])
 {
+
 	int i, j;
 	int orgin[3][3] = {
 		 {0, 0, 0},
@@ -107,24 +126,5 @@ void toppling_round(int grid1[3][3])
 				}
 			}
 		}
-	}
-}
-
-/**
- * sandpiles_sum - sandplis theory
- * @grid1: Left 3x3 grid
- * @grid2: Right 3x3 grid
- *
- *
- */
-void sandpiles_sum(int grid1[3][3], int grid2[3][3])
-{
-	sum_grid(grid1, grid2);
-
-	while (is_stable(grid1) != 0)
-	{
-		printf("=\n");
-		print_grid1(grid1);
-		toppling_round(grid1);
 	}
 }
