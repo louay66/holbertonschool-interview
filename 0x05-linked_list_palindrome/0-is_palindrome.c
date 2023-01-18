@@ -3,28 +3,6 @@
 #include "lists.h"
 
 /**
- * add_node - adds a new node at the end of a listint_t list
- * @head: pointer to pointer of first node of listint_t list
- * @n: integer to be included in new node
- * Return: address of the new element or NULL if it fails
- */
-listint_t *add_node(listint_t **head, const int n)
-{
-	listint_t *new;
-
-	new = malloc(sizeof(listint_t));
-
-	if (new == NULL)
-		return (NULL);
-
-	new->n = n;
-	new->next = *head;
-	*head = new;
-
-	return (new);
-}
-
-/**
  * is_palindrome - check if the list is palinrome
  * @head: pointer to pointer of first node of listint_t list
  * Return: 1 if list is palindrom return 0 otherwise
@@ -32,49 +10,36 @@ listint_t *add_node(listint_t **head, const int n)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *count, *cur;
-	listint_t *part1;
-	listint_t *part2;
-	int i = 0;
-	int j = 0;
-	count = *head;
-	cur = *head;
-	part1 = NULL;
-	part2 = NULL;
+	listint_t *slow, *fast;
+	int *stack, i = -1;
 
-	while (count)
+	slow = fast = *head;
+
+	if (*head == NULL)
+		return (1);
+
+	stack = malloc(sizeof(int) * 1024);
+
+	while (fast && fast->next)
 	{
-		i++;
-		count = count->next;
+		stack[++i] = slow->n;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
-	if (i % 2 != 0)
-		return (0);
+	if (fast)
+		slow = slow->next;
 
-	while (cur)
+	while (slow)
 	{
-		if (j < (i / 2))
+		if (stack[i--] != slow->n)
 		{
-			add_nodeint_end(&part1, cur->n);
-			j++;
-		}
-		else
-		{
-			add_node(&part2, cur->n);
-		}
-		cur = cur->next;
-	}
-	while (part1 || part2)
-	{
-		if (part1->n != part2->n)
-		{
-			free_listint(part1);
-			free_listint(part2);
+			free(stack);
 			return (0);
 		}
-		part1 = part1->next;
-		part2 = part2->next;
+		slow = slow->next;
 	}
 
+	free(stack);
 	return (1);
 }
