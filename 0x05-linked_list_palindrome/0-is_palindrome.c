@@ -16,7 +16,7 @@ int is_palindrome(listint_t **head)
 	slow = fast = *head;
 
 	if (*head == NULL)
-		return (0);
+		return (1);
 
 	stack = malloc(sizeof(int) * 1024);
 
