@@ -33,13 +33,14 @@ listint_t *add_node(listint_t **head, const int n)
 int is_palindrome(listint_t **head)
 {
 	listint_t *count, *cur;
-
-	count = *head;
-	cur = *head;
-	listint_t *part1 = NULL;
-	listint_t *part2 = NULL;
+	listint_t *part1;
+	listint_t *part2;
 	int i = 0;
 	int j = 0;
+	count = *head;
+	cur = *head;
+	part1 = NULL;
+	part2 = NULL;
 
 	while (count)
 	{
