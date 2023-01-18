@@ -11,15 +11,13 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *slow, *fast;
-	int *stack, i = -1;
+	int stack[1024], i = -1;
 
 	slow = fast = *head;
 	if (head == NULL)
 		return (0);
 	if (*head == NULL)
 		return (1);
-
-	stack = malloc(sizeof(int) * 1024);
 
 	while (fast && fast->next)
 	{
@@ -35,12 +33,10 @@ int is_palindrome(listint_t **head)
 	{
 		if (stack[i--] != slow->n)
 		{
-			free(stack);
 			return (0);
 		}
 		slow = slow->next;
 	}
 
-	free(stack);
 	return (1);
 }
