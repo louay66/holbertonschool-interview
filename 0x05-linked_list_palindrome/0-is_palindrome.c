@@ -14,8 +14,7 @@ int is_palindrome(listint_t **head)
 	int stack[1024], i = -1;
 
 	slow = fast = *head;
-	if (head == NULL)
-		return (0);
+
 	if (*head == NULL)
 		return (1);
 
