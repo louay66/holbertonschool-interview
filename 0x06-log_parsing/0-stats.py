@@ -27,6 +27,7 @@ if __name__ == "__main__":
             file_size += int(data[8])
             status_code[data[7]] += 1
             count += 1
+        print_output()
     except KeyboardInterrupt:
         print_output()
         raise
