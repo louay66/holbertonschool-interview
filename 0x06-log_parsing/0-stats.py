@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ program that read line from stdin"""
-import fileinput
+from sys import stdin
 
 
 def print_output():
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     file_size = 0
     count = 0
     try:
-        for i in fileinput.input():
+        for i in stdin:
             try:
                 data = i.split(" ")
                 if data[7] in status_code.keys():
