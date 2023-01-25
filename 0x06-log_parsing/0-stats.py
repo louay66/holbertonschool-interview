@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ program that read line from stdin"""
-from sys import stdin
+import fileinput
 
 
 def print_output():
@@ -18,9 +18,7 @@ if __name__ == "__main__":
     file_size = 0
     count = 0
     try:
-        for i in stdin:
-            if count % 10 == 0 and count != 0:
-                print_output()
+        for i in fileinput.input():
             try:
                 data = i.split(" ")
                 if data[7] not in status_code.keys():
@@ -28,6 +26,8 @@ if __name__ == "__main__":
                 file_size += int(data[8])
                 status_code[data[7]] += 1
                 count += 1
+                if count % 10 == 0:
+                    print_output()
             except Exception:
                 pass
         print_output()
