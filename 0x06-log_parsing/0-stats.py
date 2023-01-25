@@ -7,9 +7,8 @@ def print_output():
     """ print the status acording"""
     print("File size: {}".format(file_size))
     for a, b in sorted(status_code.items()):
-        if b == 0:
-            continue
-        print("{}: {}".format(a, b))
+        if b != 0:
+            print("{}: {}".format(a, b))
 
 
 if __name__ == "__main__":
