@@ -3,7 +3,7 @@
 import fileinput
 
 
-def print_output(status_code, file_size):
+def print_output():
     """ print the status acording"""
     print("File size: {}".format(file_size))
     for a, b in sorted(status_code.items()):
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     try:
         for i in fileinput.input():
             if count % 10 == 0 and count != 0:
-                print_output(status_code,  file_size)
+                print_output()
             data = i.split(" ")
             if data[7] not in status_code.keys():
                 continue
@@ -28,5 +28,5 @@ if __name__ == "__main__":
             status_code[data[7]] += 1
             count += 1
     except KeyboardInterrupt:
-        print_output(status_code,  file_size)
+        print_output()
         raise
