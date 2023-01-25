@@ -6,7 +6,7 @@ import fileinput
 def print_output(status_code, file_size):
     """ print the status acording"""
     print("File size: {}".format(file_size))
-    for a, b in status_code.items():
+    for a, b in sorted(status_code.items()):
         if b == 0:
             continue
         print("{}: {}".format(a, b))
@@ -21,10 +21,7 @@ if __name__ == "__main__":
         for i in fileinput.input():
             if count % 10 == 0 and count != 0:
                 print_output(status_code,  file_size)
-            try:
-                data = i.split(" ")
-            except Exception:
-                pass
+            data = i.split(" ")
             if data[7] not in status_code.keys():
                 continue
             file_size += int(data[8])
