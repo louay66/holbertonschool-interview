@@ -21,7 +21,10 @@ if __name__ == "__main__":
         for i in fileinput.input():
             if count % 10 == 0 and count != 0:
                 print_output(status_code,  file_size)
-            data = i.split(" ")
+            try:
+                data = i.split(" ")
+            except Exception:
+                pass
             if data[7] not in status_code.keys():
                 continue
             file_size += int(data[8])
