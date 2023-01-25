@@ -21,10 +21,9 @@ if __name__ == "__main__":
         for i in fileinput.input():
             try:
                 data = i.split(" ")
-                if data[7] not in status_code.keys():
-                    continue
+                if data[7] in status_code.keys():
+                    status_code[data[7]] += 1
                 file_size += int(data[8])
-                status_code[data[7]] += 1
                 count += 1
                 if count % 10 == 0:
                     print_output()
