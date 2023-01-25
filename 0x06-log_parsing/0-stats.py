@@ -25,10 +25,10 @@ if __name__ == "__main__":
                     status_code[data[7]] += 1
                 file_size += int(data[8])
                 count += 1
-                if count % 10 == 0:
-                    print_output()
             except Exception:
                 pass
+            if count % 10 == 0:
+                print_output()
         print_output()
     except KeyboardInterrupt:
         print_output()
