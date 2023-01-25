@@ -30,7 +30,7 @@ if __name__ == "__main__":
                 pass
             if count % 10 == 0:
                 print_output()
-        print_output()
     except KeyboardInterrupt:
         print_output()
         raise
+    print_output()
