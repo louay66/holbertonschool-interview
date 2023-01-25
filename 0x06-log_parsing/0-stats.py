@@ -23,13 +23,13 @@ if __name__ == "__main__":
                 print_output()
             try:
                 data = i.split(" ")
+                if data[7] not in status_code.keys():
+                    continue
+                file_size += int(data[8])
+                status_code[data[7]] += 1
+                count += 1
             except Exception:
                 pass
-            if data[7] not in status_code.keys():
-                continue
-            file_size += int(data[8])
-            status_code[data[7]] += 1
-            count += 1
         print_output()
     except KeyboardInterrupt:
         print_output()
