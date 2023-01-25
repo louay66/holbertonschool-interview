@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ program that read line from stdin"""
-from sys import stdin
+import fileinput
 
 
 def print_output():
@@ -12,12 +12,14 @@ def print_output():
 
 
 if __name__ == "__main__":
+    """main function"""
+
     status_code = {'200': 0, '301': 0, '400': 0,
                    '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
     file_size = 0
     count = 0
     try:
-        for i in stdin:
+        for i in fileinput.input():
             try:
                 data = i.split(" ")
                 if data[7] in status_code.keys():
