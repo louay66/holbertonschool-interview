@@ -24,9 +24,9 @@ if __name__ == "__main__":
         for i in fileinput.input():
             try:
                 data = i.split(" ")
-                if data[7] in status_code.keys():
-                    status_code[data[7]] += 1
-                file_size += int(data[8])
+                if data[-2] in status_code.keys():
+                    status_code[data[-2]] += 1
+                file_size += int(data[-1])
                 count += 1
             except Exception:
                 pass
