@@ -10,26 +10,13 @@
 int check_cycle(listint_t *list)
 {
 	listint_t *node = list;
-	int *addres[200];
-	int i = -1;
-	int j;
-	int count = 0;
 
-	if (list == NULL)
-		return (1);
-
-	while (node != NULL)
+	while (node)
 	{
-		count++;
-		addres[i++] = &node->n;
-		for (j = 0; j <= count; j++)
-		{
-			if (addres[j] == &node->next->n)
-			{
-				return (1);
-			}
-		}
-		node = node->next;
+		list = list->next;
+		node = node->next->next;
+		if (node == list)
+			return (1);
 	}
 	return (0);
 }
