@@ -15,6 +15,9 @@ int check_cycle(listint_t *list)
 	int j;
 	int count = 0;
 
+	if (list == NULL)
+		return (1);
+
 	while (node != NULL)
 	{
 		count++;
