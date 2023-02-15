@@ -7,7 +7,7 @@ utf-8 ot note
 
 def validUTF8(data):
     count_byte = 0
-    for i in range(0, len(data)):
+    for i in data:
         if count_byte == 0:
             if (i >> 5) == 6:
                 count_byte = 1
