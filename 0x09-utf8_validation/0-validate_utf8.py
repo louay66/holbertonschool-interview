@@ -6,35 +6,19 @@ utf-8 ot note
 
 
 def validUTF8(data):
-    for i in data:
-        if i < 0:
-            return False
-        if (i >= 0 and i <= 127):
-            i = i >> 31
-            if i != 0:
+    count_byte = 0
+    for i in range(0, len(data)):
+        if count_byte == 0:
+            if (i >> 5) == 6:
+                count_byte = 1
+            elif (i >> 4) == 14:
+                count_byte = 2
+            elif (i >> 3) == 30:
+                count_byte = 3
+            elif (i >> 7):
                 return False
-        elif (i >= 128 and i <= 1919):
-            ''' a = i << 8
-            a = a >> 30 '''
-            i = i >> 29
-            if i != 6:
+        else:
+            if (i >> 6) != 2:
                 return False
-        elif (i >= 1920 and i <= 61439):
-            ''' b = i << 16
-            b = b >> 30
-            a = i << 8
-            a = i >> 30 '''
-            i = i >> 28
-            if i != 14:
-                return False
-        elif (i >= 61440 and i <= 1048575):
-            ''' c = i << 24
-            c = c >> 30
-            b = i << 16
-            b = b >> 30
-            a = i << 8
-            a = a >> 30 '''
-            i = i >> 27
-            if i != 30:
-                return False
-    return True
+            count_byte -= 1
+    return count_byte == 0
