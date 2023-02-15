@@ -6,20 +6,25 @@ utf-8 ot note
 
 
 def validUTF8(data):
-
-    bit_count = 0
-    for byte in data:
-        if bit_count == 0:
-            if (byte >> 5) == 0b110:
-                bit_count = 1
-            elif (byte >> 4) == 0b1110:
-                bit_count = 2
-            elif (byte >> 3) == 0b11110:
-                bit_count = 3
-            elif (byte >> 7):
-                return False
+    """
+    Return: True if data is a valid UTF-8 encoding,
+    else return False
+    """
+    i = 0
+    while i < len(data):
+        count = 0
+        mask = 1 << 7
+        while mask & data[i]:
+            count += 1
+            mask >>= 1
+        if count == 0:
+            pass
+        elif count == 1 or count > 4:
+            return False
         else:
-            if (byte >> 6) != 0b10:
-                return False
-            bit_count -= 1
-    return bit_count == 0
+            for j in range(i + 1, i + count):
+                if j >= len(data) or (data[j] >> 6) != 2:
+                    return False
+            i += count - 1
+        i += 1
+    return True
