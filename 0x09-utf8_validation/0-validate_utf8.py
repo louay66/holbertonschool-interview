@@ -7,6 +7,8 @@ utf-8 ot note
 
 def validUTF8(data):
     for i in data:
+        if i < 0:
+            return False
         if (i >= 0 and i <= 127):
             i = i >> 31
             if i != 0:
