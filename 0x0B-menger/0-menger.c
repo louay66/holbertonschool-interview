@@ -1,47 +1,5 @@
 #include "menger.h"
 /**
- * remove_center - remove the center of squer
- *
- * @size: size of square
- * @sponge: array of square
- *
- * Return: void
- */
-void remove_center(int size, char sponge[][size])
-{
-	int i, j;
-	int center = size / 3;
-
-	for (i = center; i < center * 2; i++)
-	{
-		for (j = center; j < center * 2; j++)
-		{
-			sponge[i][j] = ' ';
-		}
-	}
-}
-/**
- * print_sponge - print squer
- *
- * @size: size of square
- * @sponge: array of square
- *
- * Return: void
- */
-void print_sponge(int size, char sponge[][size])
-{
-	int i, j;
-
-	for (i = 0; i < size; i++)
-	{
-		for (j = 0; j < size; j++)
-		{
-			printf("%c", sponge[i][j]);
-		}
-		printf("\n");
-	}
-}
-/**
  * menger - draw a 2D menger sponge squair
  *
  * @level: level of menger sponge
@@ -67,7 +25,15 @@ void menger(int level)
 			sponge[i][j] = '#';
 		}
 	}
-	remove_center(size, sponge);
+	int center = size / 3;
+
+	for (i = center; i < center * 2; i++)
+	{
+		for (j = center; j < center * 2; j++)
+		{
+			sponge[i][j] = ' ';
+		}
+	}
 	for (k = 0; k < level; k++)
 	{
 		int step = pow(3, k);
@@ -86,5 +52,12 @@ void menger(int level)
 			}
 		}
 	}
-	print_sponge(size, sponge);
+	for (i = 0; i < size; i++)
+	{
+		for (j = 0; j < size; j++)
+		{
+			printf("%c", sponge[i][j]);
+		}
+		printf("\n");
+	}
 }
