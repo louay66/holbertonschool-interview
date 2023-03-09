@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <math.h>
 #include "menger.h"
 /**
  * remove_center - remove the center of squer
