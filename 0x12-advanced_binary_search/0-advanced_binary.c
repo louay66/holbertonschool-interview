@@ -36,7 +36,7 @@ int search_into_array(int *array, size_t start, size_t end, int value)
 {
 	size_t mid_value;
 
-	if (start > end)
+	if (start >= end)
 	{
 		if (array[start] == value)
 		{
@@ -49,6 +49,7 @@ int search_into_array(int *array, size_t start, size_t end, int value)
 
 		else
 		{
+			printf("Searching in array: %d\n", array[end]);
 			return (-1);
 		}
 	}
@@ -81,6 +82,10 @@ int search_into_array(int *array, size_t start, size_t end, int value)
 
 int advanced_binary(int *array, size_t size, int value)
 {
+	if (!array)
+	{
+		return (-1);
+	}
 	if (size == 2)
 	{
 		print_array(array, 0, size - 1);
@@ -99,10 +104,5 @@ int advanced_binary(int *array, size_t size, int value)
 		else
 			return (-1);
 	}
-	if (!array)
-	{
-		return (-1);
-	}
-
 	return (search_into_array(array, 0, size - 1, value));
 }
