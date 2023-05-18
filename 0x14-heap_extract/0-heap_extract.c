@@ -88,7 +88,7 @@ void find_replacement(heap_t *root, size_t level, heap_t **last)
  */
 
 void free_and_replace(heap_t **root, heap_t **left,
-			  heap_t **right, heap_t **last)
+		heap_t **right, heap_t **last)
 {
 	/* extract and reset root pointer if only node */
 	if (*last == *root)

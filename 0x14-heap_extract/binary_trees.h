@@ -20,6 +20,7 @@ typedef struct binary_tree_s
 	struct binary_tree_s *left;
 	struct binary_tree_s *right;
 } binary_tree_t;
+typedef binary_tree_t heap_t;
 
 void binary_tree_print(const heap_t *);
 int heap_extract(heap_t **root);
