@@ -10,11 +10,26 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	while (head != NULL)
+	listint_t *slow = head, *fast = head;
+
+	while (fast && fast->next)
 	{
-		if ((void *)head->next > (void *)head)
-			return (head->next);
-		head = head->next;
+		slow = slow->next;
+		fast = fast->next->next;
+
+		if (slow == fast)
+		{
+			slow = head;
+
+			while (slow != fast)
+			{
+				slow = slow->next;
+				fast = fast->next;
+			}
+
+			return (slow);
+		}
 	}
+
 	return (NULL);
 }
