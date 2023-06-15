@@ -10,12 +10,8 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	if (!head)
-		return (NULL);
 	while (head != NULL)
 	{
-		if (head->next == NULL)
-			return (NULL);
 		if ((void *)head->next > (void *)head)
 			return (head->next);
 		head = head->next;
