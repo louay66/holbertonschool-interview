@@ -11,7 +11,7 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    coins.sort(reverse=true)
+    coins.sort(reverse=True)
     fewest = 0
     i = 0
     while (i < len(coins)):
