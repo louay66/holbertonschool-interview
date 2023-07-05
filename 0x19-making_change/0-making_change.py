@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Simple python code to determine the fewest
+number of coins needed to meet agiven amount " total ".
+"""
 
 
 def makeChange(coins, total):
