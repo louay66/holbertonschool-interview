@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
-Simple python code to determine the fewest
-number of coins needed to meet agiven amount " total ".
+finds fewest number of coins needed
+to meet a given amount total.
 """
 
 
 def makeChange(coins, total):
     """
-    Determines the fewest number of coins needed to meet a given amount total.
+    returns fewest number of coins needed
+    to meet a given amount total.
     """
     if total <= 0:
         return 0
