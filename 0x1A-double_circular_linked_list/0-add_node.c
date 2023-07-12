@@ -1,52 +1,8 @@
-#include <stdlib.h>
-#include <string.h>
 #include "list.h"
 
 /**
- * add_node_end - Add a new node to the end of a double circular linked list
- * @list: Pointer to the list to modify
- * @str: The string to copy into the new node
- *
- * Return: Address of the new node, or NULL on failure
- */
-List *add_node_end(List **list, char *str)
-{
-	List *new_node;
-	List *last;
-
-	new_node = malloc(sizeof(*new_node));
-	if (new_node == NULL)
-		return (NULL);
-
-	new_node->str = strdup(str);
-	if (!(new_node->str))
-	{
-		free(new_node);
-		return (NULL);
-	}
-
-	if (*list == NULL)
-	{
-		new_node->prev = new_node;
-		new_node->next = new_node;
-		*list = new_node;
-	}
-	else
-	{
-		last = (*list)->prev;
-
-		new_node->prev = last;
-		new_node->next = *list;
-
-		last->next = new_node;
-		(*list)->prev = new_node;
-	}
-
-	return (new_node);
-}
-
-/**
- * add_node_begin - Add a new node to a double circular linked list
+ * add_node_end - Add a new node at the begining
+ * of a double circular linked list
  * @list: Pointer to the list to modify
  * @str: The string to copy into the new node
  *
@@ -54,36 +10,45 @@ List *add_node_end(List **list, char *str)
  */
 List *add_node_begin(List **list, char *str)
 {
-	List *new_node;
-	List *last;
+	return (add_node_end(list, str) ? *list = (*list)->prev : NULL);
+}
+/**
+ * add_node_end - Add a new node at the end of a double circular linked list
+ * @list: Pointer to the list to modify
+ * @str: The string to copy into the new node
+ *
+ * Return: Address of the new node, or NULL on failure
+ */
 
-	new_node = malloc(sizeof(*new_node));
-	if (new_node == NULL)
+List *add_node_end(List **list, char *str)
+{
+	List *end, *new;
+
+	if (!list || !str)
+		return (NULL);
+	new = malloc(sizeof(*new));
+	if (!new)
 		return (NULL);
 
-	new_node->str = strdup(str);
-	if (!(new_node->str))
+	new->str = strdup(str);
+	if (!new->str)
 	{
-		free(new_node);
+		free(new);
 		return (NULL);
 	}
-	if (*list == NULL)
+	if (!(*list))
 	{
-		new_node->prev = new_node;
-		new_node->next = new_node;
+		*list = new;
+		new->next = new->prev = new;
 	}
 	else
 	{
-		last = (*list)->prev;
+		end = (*list)->prev;
 
-		new_node->prev = last;
-		new_node->next = *list;
-
-		last->next = new_node;
-		(*list)->prev = new_node;
+		new->prev = end;
+		new->next = (*list);
+		end->next = (*list)->prev = new;
 	}
 
-	*list = new_node;
-
-	return (new_node);
+	return (new);
 }
